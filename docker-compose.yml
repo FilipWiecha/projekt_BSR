@@ -25,7 +25,6 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  # --- NOWA BAZA DANYCH DLA WĘZŁÓW ---
   postgres_nodes:
     image: postgres:15-alpine
     container_name: bully-postgres-nodes
@@ -34,9 +33,9 @@ services:
       POSTGRES_PASSWORD: node_password
       POSTGRES_DB: node_db
     ports:
-      - "5433:5432" # <-- KLUCZOWE: z zewnątrz łączysz się przez 5433!
+      - "5433:5432"
     volumes:
-      - pgdata_nodes:/var/lib/postgresql/data # <-- Nowy, odseparowany wolumen
+      - pgdata_nodes:/var/lib/postgresql/data
 
   redis:
     image: redis:alpine
@@ -47,4 +46,4 @@ services:
 
 volumes:
   pgdata:
-  pgdata_nodes: # <-- Pamiętaj, aby dopisać ten wolumen na samym dole!
+  pgdata_nodes:
